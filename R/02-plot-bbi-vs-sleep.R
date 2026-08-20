@@ -117,3 +117,48 @@ ggsave(here::here("figures", "Chapter 3", "bbi_vs_sleep_plot_without_na06.pdf"),
        height = 9,
        units = "in",
        dpi = 500)
+
+
+## ---- boxplots -----
+
+boxplots_all <- imap(joined_data_without_na, function(df,i){
+  plot_boxplot_bbi_and_sleep(df, paste("Boxplot of BBI against Sleep Quality for ", i))
+})
+
+
+# save plots
+for (i in names(boxplots_all)) {
+  ggsave(
+    filename = here::here("figures", "Chapter 3", "sleep-vs-bbi-all", paste0(i, "_BBI_sleep-boxplots.pdf")),
+    plot = boxplots_all[[i]],
+    width = 16,
+    height = 9,
+    dpi = 500
+  )
+}
+
+## ---- thesis plots ----
+joined_data_without_na$joined_df03 |> 
+  plot_boxplot_bbi_and_sleep("Boxplot of BBI against Sleep Pattern for Participant 3")
+
+
+
+ggsave(here::here("figures", "Chapter 3", "bbi_vs_sleep_boxplot_without_na03.pdf"), 
+       width = 12,
+       height = 6,
+       units = "in",
+       dpi = 500)
+
+
+joined_data_without_na$joined_df07 |> 
+  plot_boxplot_bbi_and_sleep("Boxplot of BBI against Sleep Pattern for Participant 7")
+
+
+
+ggsave(here::here("figures", "Chapter 3", "bbi_vs_sleep_boxplot_without_na07.pdf"), 
+       width = 12,
+       height = 6,
+       units = "in",
+       dpi = 500)
+
+
