@@ -70,11 +70,11 @@ for (j in 1: length(joined_data_without_na)) {
 
 
 # ---- make plots -----
-
-
 # Get 15 minute intervals
 joined_15_without_na <- map(joined_data_without_na, convert_bbi_sleep_15_min)
 
+
+## ----- step plots ----
 # plot and save all
 plots_bbi_and_sleep_without_na <- imap(joined_15_without_na, function(df,i){
   plot_bbi_and_sleep(df, paste("BBI against Sleep Quality for ", i))
@@ -119,6 +119,7 @@ ggsave(here::here("figures", "Chapter 3", "bbi_vs_sleep_plot_without_na06.pdf"),
        dpi = 500)
 
 
+<<<<<<< Updated upstream
 ## ---- boxplots -----
 
 boxplots_all <- imap(joined_data_without_na, function(df,i){
@@ -158,6 +159,29 @@ joined_data_without_na$joined_df07 |>
 ggsave(here::here("figures", "Chapter 3", "bbi_vs_sleep_boxplot_without_na07.pdf"), 
        width = 12,
        height = 6,
+=======
+## ---- boxplots ----
+
+
+boxplots_bbi_and_sleep_without_na <- imap(joined_data_without_na, function(df, i){
+  plot_boxplot_bbi_and_sleep(df, paste("Boxplot of BBI against Sleep Quality for", i))
+})
+boxplots_bbi_and_sleep_without_na
+
+
+joined_data_without_na$joined_df03 %>% 
+  ggplot(aes(x = type, y = bbi, fill = type)) + 
+  geom_boxplot() + theme_classic() + harrypotter::scale_fill_hp("ravenclaw", discrete = TRUE) + 
+  labs(x = "Sleep Pattern",
+       y = "BBI",
+       title = "Boxplot of BBI against Sleep Pattern for Participant 3") + 
+  theme(legend.position = "none",
+        text = element_text(size = 20))
+
+ggsave(here::here("figures", "Pressie-boxplot-3.pdf"),
+       height = 6,
+       width = 12,
+>>>>>>> Stashed changes
        units = "in",
        dpi = 500)
 
