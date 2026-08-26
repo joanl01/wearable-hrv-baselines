@@ -50,5 +50,6 @@ rsconnect/
 
 
 # data folder
-.DS_Store
 data/
+
+figures/

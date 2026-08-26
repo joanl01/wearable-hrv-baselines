@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="defining-normal-establishing-personalised-physiological-baselines-from-wearable-heart-rate-variability-data">Defining Normal: Establishing Personalised Physiological Baselines from Wearable Heart Rate Variability Data</h1>
+<p>This repository contains the analysis code and research outputs associated with the Master of Philosophy thesis:</p>
+<p><strong>Defining Normal: Establishing Personalised Physiological Baselines from Wearable Heart Rate Variability Data</strong></p>
+<p><strong>Joan Shu Ting Lim</strong><br>
+Master of Philosophy in Applied Mathematics and Statistics<br>
+Adelaide University, School of Mathematical Science<br>
+2026</p>
+<h2 id="overview">Overview</h2>
+<p>Heart Rate Variability (HRV) is increasingly used with consumer wearable devices to continuously monitor physiological states. However, HRV varies substantially between individuals, while many commonly used HRV metrics contain overlapping information.</p>
+<p>This project investigates whether stable, and personalised physiological baselines can be derived from wearable beat-to-beat (BBI) data using a reduced set of HRV measures.</p>
+<p>This study uses longitudinal data collected from Garmin wearable devices across 11 participants over approximately 6 months. The dataset contains more than 62 million observations of BBI, which provides a high-resolution longitudinal dataset to investigate physiological patterns that are within participants.</p>
+<p>The analysis addresses 3 main questions:</p>
+<ol>
+<li>Can BBI derived from wearables distinguish sleep from wakefulness and identify physiologically stable periods for baseline estimation?</li>
+<li>Which HRV metrics provide stable and representative measures of an individual's physiological baseline?</li>
+<li>Can a substantially reduced set of HRV metrics retain the information contained in a larger HRV feature set?</li>
+</ol>
+<h2 id="analysis">Analysis:</h2>
+<p>The repository follows the main analytical stages of the thesis:</p>
+<h3 id="1-bbi-and-sleep-data-preperation">1. BBI and sleep data preperation</h3>
+<p>Raw wearable BBI and Garmin sleep-stage data are transformed to a common time resolution and combined to investigate the relationship between BBI and sleep/wakefulness stages.</p>
+<h3 id="2-identifying-stable-sleep-windows">2. Identifying stable sleep windows</h3>
+<p>Statsitical and classification approcahes are used to investigate whether BBI can distinguish sleeping from waking periods, including:</p>
+<ul>
+<li>exploratory time series analysis</li>
+<li>linear regression</li>
+<li>ANOVA</li>
+<li>individual-specific logistic regression</li>
+<li>ROC/AUC analysis</li>
+</ul>
+<p>The results indicate that BBI contains substantial information about sleep/wake states, while the optimal separation between states varies between individuals.</p>
+<h3 id="3-hrv-metric-calculations-and-evaluation">3. HRV metric calculations and evaluation</h3>
+<p>HRV measures are calculated across multiple domains:</p>
+<ol>
+<li>time-domain metrics (HR, SDNN, SDANN, SDNNIDX, pNN50, SDSD, rMSSD,
+IRRR, MADRR, TINN, HRVi)</li>
+<li>frequency-domain metrics (, HRV,
+ULF, VLF, LF, HF, LFHF)</li>
+<li>nonlinear HRV metrics (PoincarePlot.SD1, PoincarePlot.SD2,
+REC, RATIO, DET, DIV, Lmax, Lmean,
+LmeanWithoutMain, ENTR, TREND, LAM, Vmax)</li>
+</ol>
+<p>The analysis evalustaes how these measures behave across physiological states and evaluates their relationships and redundancy</p>
+<h3 id="4-dimensionality-reduction">4. Dimensionality reduction</h3>
+<p>Principal Component Analysis (PCA), correlation analysis, and hierarchical clustering were utilised to investigate whether the larger collection of HRV metrics contains substantial redundant information.</p>
+<p>The clustering analyses consistently identified groups of strongly related HRV measures, suggesting that many metrics provide overlapiing rather than independent information.</p>
+<h3 id="5-reduced-hrv-feature-set">5. Reduced HRV feature set</h3>
+<p>Three representative measures from the 3 major structures identified within the HRV space were selected:</p>
+<ul>
+<li>HR - Heart rate</li>
+<li>HF - High-frequency power</li>
+<li>ULF - Ultra-low-frequency power</li>
+</ul>
+<h3 id="6-evaluation-of-personalised-baseline-physiology">6. Evaluation of personalised baseline physiology</h3>
+<p>The final analysis evaluates whether the reduced feature set can distinguish resting from non-resting physiological state using mixed-effects logistic regression with participant as the random effect.</p>
+<p>The reduced set of HRV metrics (HR, HF, ULF) provided a substantially lower BIC compared to the full HRV model, which supports an accurate representation of the underlying physiological signal.</p>
+<p>By calculating the Intra-class Correlation Coefficient (ICC), The analysis further identified that the last moment of deep sleep as a particularly stable baseline window for the reduced set of metrics across all participants.</p>
+<h2 id="key-findings">Key findings</h2>
+<p>The main findings of this thesis are:</p>
+<ul>
+<li>BBI differs systematically between sleep and wakefulness</li>
+<li>Sleep provides a relatively stable physiological window for investigating individual baseline physiology</li>
+<li>Physiological baselines differ substantially between individuals, supporting personalised rather than reference values at a population level</li>
+<li>Many commonly used HRV metrics are strongly correlated and contain overlapping information</li>
+<li>A reduced set of metrics (HR, HF, ULF) provide a compact representation of the dominant HRV signal across the HRV metrics.</li>
+<li>The last moment of deep sleep is a promisign candidate window for establishing an individual's physiological baseline.</li>
+</ul>
+<h2 id="reproducibiltiy">Reproducibiltiy</h2>
+<p>The analysis was conducted in <strong>R 4.5.2</strong>. HRV calculations included measures derived using the <code>RHRV</code> package. Where possible, this repository provides:</p>
+<ul>
+<li>data processing scripts</li>
+<li>statistical analysis scripts</li>
+<li>HRV calculation procedures</li>
+<li>model-fitting code</li>
+<li>figure generation code</li>
+</ul>
+<p>The aim is to make the analytical workflow transparent and reproducible from raw or appropriately prepared data through to the reported results.</p>
+<h2 id="data-availability-and-participant-privacy">Data availability and participant privacy</h2>
+<p>The underlying wearable data were provided for the research project <em>“What causes low back pain to flare: Has a major opportunity to understand back pain been missed?”</em> and contain longitudinal measurements from human participants.</p>
+<p><strong>Participant-level raw data should not be redistributed through this repository unless the appropriate permissions and data-sharing approvals have been obtained.</strong></p>
+<p>The repository contains the analysis code and documentation required to understand the workflow, while restricted data and/or participant-level outputs are excluded or provided only through an approved access mechanism.</p>
+
+</body>
+</html>
