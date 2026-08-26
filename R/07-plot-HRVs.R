@@ -11,14 +11,12 @@ hrvs <- hrvs |> select(-"Time", -"shift", -"sizesp", -"ULFmin", -"ULFmax",
 
 
 # HRV metrics you want to plot
-hrv_metrics <- c(
-  "SDNN", "SDANN", "SDNNIDX", "pNN50", "SDSD", "rMSSD",
-  "IRRR", "MADRR", "TINN", "HRVi", "HRV",
-  "ULF", "VLF", "LF", "HF", "LFHF",
-  "PoincarePlot.SD1", "PoincarePlot.SD2",
-  "REC", "RATIO", "DET", "DIV", "Lmax", "Lmean",
-  "LmeanWithoutMain", "ENTR", "TREND", "LAM", "Vmax"
-)
+hrv_metrics <- c("HR", "SDNN", "SDANN","SDNNIDX","pNN50",  "SDSD", "rMSSD","IRRR", "MADRR","TINN", "HRVi",
+              "HRV","ULF","VLF",  "LF","HF","LFHF", 
+              "PoincarePlot.SD1", "PoincarePlot.SD2","REC","RATIO","DET",
+              "DIV", "Lmax","Lmean", "LmeanWithoutMain",
+              "ENTR","LAM", "Vmax", "TREND")
+
 
 # Prepare data
 hrvs_long <- hrvs %>%
