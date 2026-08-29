@@ -3,7 +3,7 @@ pacman::p_load(readr, tidyverse, gt, fs, here, purrr, caTools, pROC)
 
 # Load Data
 hrv_with_sleep_all <- readRDS(here::here("data", "hrv_with_sleep_joined.rds"))
-
+fs::dir_ls(here::here("functions")) |> walk(source)
 
 features <- c(
   "HR", "SDNN", "SDANN", "SDNNIDX", "pNN50", "SDSD", "rMSSD",
