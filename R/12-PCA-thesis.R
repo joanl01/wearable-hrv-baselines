@@ -23,19 +23,28 @@ tidied <- tidy(df3_PCA, n = 3) |> as.data.frame()
 tidied <- tidied |> mutate(component = factor(component, levels = paste0("PC", 1:43)))
 
 # Loadings plot
-loadings <- tidied|> 
-  mutate(terms = tidytext::reorder_within(terms, 
-                                          abs(value), 
-                                          component)) %>% filter(component %in% paste0("PC", 1:6)) |> 
-  ggplot(aes(abs(value), terms, fill = value > 0)) +
+loadings <- tidied |> 
+  mutate(
+    terms = tidytext::reorder_within(terms, abs(value), component),
+    direction = ifelse(value > 0, "Positive", "Negative")
+  ) |> 
+  filter(component %in% paste0("PC", 1:6)) |> 
+  ggplot(aes(abs(value), terms, fill = direction)) +
   geom_col() +
   facet_wrap(~component, scales = "free_y") +
   tidytext::scale_y_reordered() +
   harrypotter::scale_fill_hp("ravenclaw", discrete = TRUE) + 
-  labs(title = "Loadings plot of the first 6 principal components of PCA for Participant 7",
-       x = "Absolute value of contribution",
-       y = NULL, fill = "Positive?"
-  ) + theme_bw() + theme(legend.position = "bottom") + scale_x_continuous(breaks = c(0, 0.1,0.2, 0.3,0.4,0.5, 0.6))
+  labs(
+    title = "Loadings plot of the first 6 principal components of PCA for Participant 7",
+    x = "Absolute value of contribution",
+    y = NULL,
+    fill = NULL
+  ) +
+  theme_bw() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(
+    breaks = c(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6)
+  )
 
 ggsave(here::here("figures", "Chapter 6", "PCA", "loadings-plot.pdf"),
        width = 12, height = 8, 
